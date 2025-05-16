@@ -136,17 +136,12 @@ HAVING COUNT(*) >= 5
 [1934. Confirmation Rate](https://leetcode.com/problems/confirmation-rate/)
 ```sql
 SELECT 
-  s.user_id, 
-  ROUND(
-    COALESCE(
-      SUM(
-        CASE WHEN ACTION = 'confirmed' THEN 1 END
-      ) / COUNT(*), 0),2) 
-  AS confirmation_rate 
-FROM Signups s 
+    s.user_id, 
+    ROUND(IFNULL(AVG(c.action = 'confirmed'),0),2) AS confirmation_rate
+FROM Signups s
 LEFT JOIN Confirmations c 
-ON s.user_id = c.user_id 
-GROUP BY s.user_id;  
+    ON s.user_id = c.user_id
+GROUP BY s.user_id; 
 ```
 
 [620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies)
