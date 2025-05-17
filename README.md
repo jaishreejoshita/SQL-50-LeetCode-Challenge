@@ -143,6 +143,12 @@ LEFT JOIN Confirmations c
     ON s.user_id = c.user_id
 GROUP BY s.user_id; 
 ```
+✅ Explanation:
+AVG(c.action = 'confirmed'): calculates the fraction of confirmation actions that are 'confirmed'.
+
+IFNULL(..., 0): returns 0 if the user has no confirmations.
+
+ROUND(..., 2): limits the result to 2 decimal places.
 
 [620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies)
 ```sql
