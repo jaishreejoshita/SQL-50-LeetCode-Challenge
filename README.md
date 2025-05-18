@@ -158,7 +158,7 @@ SELECT *
 FROM Cinema
 WHERE id % 2 <> 0 
 AND description <> "boring"
-ORDER BY rating DESC
+ORDER BY rating DESC;
 
 --OR
 
@@ -188,7 +188,7 @@ SELECT project_id, ROUND(AVG(experience_years), 2) average_years
 FROM Project p 
 LEFT JOIN Employee e
 ON p.employee_id = e.employee_id
-GROUP BY project_id
+GROUP BY project_id;
 ```
 
 [1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest)
