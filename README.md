@@ -160,6 +160,15 @@ WHERE id % 2 <> 0
 AND description <> "boring"
 ORDER BY rating DESC
 ```
+--OR
+
+```sql
+SELECT *
+FROM Cinema
+WHERE (id%2 = 1) and (description != 'boring')
+ORDER BY rating DESC;
+```
+
 
 [1251. Average Selling Price](https://leetcode.com/problems/average-selling-price/)
 ```sql
