@@ -345,6 +345,26 @@ SELECT COALESCE(
   ORDER BY num DESC
   LIMIT 1), null) 
   AS num
+
+--OR
+SELECT MAX(num) AS num
+FROM (
+    SELECT num
+    FROM MyNumbers
+    GROUP BY num
+    HAVING COUNT(*) = 1
+) AS SingleNumbers;
+
+--OR
+SELECT num
+FROM (
+    SELECT num
+    FROM MyNumbers
+    GROUP BY num
+    HAVING COUNT(*) = 1
+    ORDER BY num DESC
+    LIMIT 1
+) AS SingleNumber;
 ```
 
 [1045. Customers Who Bought All Products](https://leetcode.com/problems/customers-who-bought-all-products/)
