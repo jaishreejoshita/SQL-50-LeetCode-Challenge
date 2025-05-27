@@ -545,6 +545,15 @@ FROM Person p, Person q
 WHERE p.id > q.id
 AND q.Email = p.Email
 ```
+✅ Explanation:
+
+DELETE p: This tells the database to delete rows from the alias p (which refers to the Person table).
+
+FROM Person p, Person q: This creates a self-join: the table Person is referred to twice—once as p and once as q. This allows the query to compare one row (p) to another row (q) in the same table.
+
+WHERE p.id > q.id: This ensures that only rows with larger IDs than a matching row will be considered for deletion. (Assuming id is an auto-incrementing primary key, the row with the smallest id is the "first" one inserted.)
+
+AND p.Email = q.Email: This condition ensures you're comparing rows with the same email address.
 
 [176. Second Highest Salary](https://leetcode.com/problems/second-highest-salary)
 ```sql
@@ -557,8 +566,6 @@ AS SecondHighestSalary
 
 -- HINT: subquery is used to return null if there is no SecondHighestSalary
 ```
-
-
  
 [1517. Find Users With Valid E-Mails](https://leetcode.com/problems/find-users-with-valid-e-mails)
 ```sql
