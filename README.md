@@ -329,7 +329,9 @@ HAVING COUNT(student) >= 5
 ✅ Explanation:
 
 GROUP BY class: Groups the data by each unique class.
+
 COUNT(DISTINCT student): Counts how many unique students are in each class.
+
 HAVING COUNT(DISTINCT student) >= 5: Filters to only include classes with 5 or more unique students.
 
 [1729. Find Followers Count](https://leetcode.com/problems/find-followers-count/)
@@ -508,10 +510,15 @@ FROM Users;
 ✅ Explanation:
 
 LEFT(name, 1): Gets the first character.
+
 UPPER(...): Uppercases the first character.
+
 SUBSTRING(name, 2): Gets all characters starting from position 2.
+
 LOWER(...): Lowercases the rest of the string.
+
 CONCAT(...): Joins them back together.
+
 Renames the result column as name.
 
 [1527. Patients With a Condition](https://leetcode.com/problems/patients-with-a-condition)
@@ -520,7 +527,20 @@ SELECT patient_id, patient_name, conditions
 FROM patients 
 WHERE conditions LIKE '% DIAB1%' 
 OR conditions LIKE 'DIAB1%'
+
+--OR
+SELECT *
+FROM Patients
+WHERE conditions LIKE "%DIAB1%";
 ```
+✅ Explanation:
+
+LIKE: is used to match a pattern.
+
+% is a wildcard that matches any sequence of characters.
+
+'DIAB1' is the substring you're searching for within the conditions column.
+
 
 [196. Delete Duplicate Emails](https://leetcode.com/problems/delete-duplicate-emails)
 ```sql
