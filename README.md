@@ -505,7 +505,8 @@ SELECT
     UPPER(LEFT(name, 1)), 
     LOWER(SUBSTRING(name, 2))
   ) AS name
-FROM Users;
+FROM Users
+ORDER BY user_id;
 ```
 ✅ Explanation:
 
@@ -527,11 +528,6 @@ SELECT patient_id, patient_name, conditions
 FROM patients 
 WHERE conditions LIKE '% DIAB1%' 
 OR conditions LIKE 'DIAB1%'
-
---OR
-SELECT *
-FROM Patients
-WHERE conditions LIKE "%DIAB1%";
 ```
 ✅ Explanation:
 
