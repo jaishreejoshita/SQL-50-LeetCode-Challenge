@@ -628,7 +628,39 @@ ON p.product_id = o.product_id
 WHERE DATE_FORMAT(order_date, '%Y-%m') = '2020-02'
 GROUP BY p.product_name
 HAVING SUM(o.unit) >= 100
+
+--OR
+SELECT p.product_name, SUM(o.unit) AS unit
+FROM Products p
+JOIN Orders o
+ON p.product_id = o.product_id
+WHERE o.order_date LIKE '2020-02-%'
+GROUP BY p.product_id
+HAVING unit>=100;
 ```
+Intuition
+
+Idea is to get name of products having number of units sold at least 100 in a certain time.
+
+Approach
+
+Joining the two tables to be able to track orders and products.
+
+Summing the number of units sold on a certain date
+
+Filtering the results not exceeding 100
+
+✅ Explanation:
+
+SELECT: You're retrieving product_name and the total units sold.
+
+JOIN: You're joining Products and Orders on product_id, which is correct.
+
+WHERE: You're filtering orders from February 2020 using LIKE '2020-02-%', which works if order_date is stored as a string. If it's a date type, you should use a date range instead.
+
+GROUP BY: You're grouping by p.product_id, which works, but since you're selecting product_name, best practice is to also include it in the GROUP BY (or use only aggregate functions on non-grouped columns).
+
+HAVING: Filters grouped results to those with at least 100 units sold.
 
 [1484. Group Sold Products By The Date](https://leetcode.com/problems/group-sold-products-by-the-date/)
 ```sql
