@@ -575,11 +575,18 @@ WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_\.\-]*@leetcode\\.com$'
 ```
 ✅ Explanation:
 
-^[a-zA-Z] - The first character is a letter
+^: Start of the string
 
-[a-zA-Z0-9_.-]* - The accepted characters after the first repeated 0 or more times
+[A-Za-z]: First character must be a letter (A–Z or a–z)
 
-@leetcode\.com$ - The email must end with the string '@leetcode.com'
+[A-Za-z0-9._-]*: After that, allow zero or more characters that are:
+letters, numbers, ., _, or -
+
+@leetcode:Must literally match @leetcode
+
+\\.com:	Must literally match .com — the . is escaped with \\ because . means "any character" in regex\
+
+$: End of the string
 
 [1204. Last Person to Fit in the Bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/)
 ```sql
