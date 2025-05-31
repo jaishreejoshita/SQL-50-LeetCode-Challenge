@@ -573,6 +573,13 @@ SELECT *
 FROM Users
 WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_\.\-]*@leetcode\\.com$'
 ```
+✅ Explanation:
+
+^[a-zA-Z] - The first character is a letter
+
+[a-zA-Z0-9_.-]* - The accepted characters after the first repeated 0 or more times
+
+@leetcode\.com$ - The email must end with the string '@leetcode.com'
 
 [1204. Last Person to Fit in the Bus](https://leetcode.com/problems/last-person-to-fit-in-the-bus/)
 ```sql
